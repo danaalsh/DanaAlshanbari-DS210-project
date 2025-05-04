@@ -31,3 +31,22 @@ pub fn read_data(path: &str) -> Vec<Student> {
 
     students
 }
+
+// One Test
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // Confirms that read_data correctly loads and parses rows from the test dataset
+    #[test]
+    fn test_load_data() {
+        let students = read_data("test_data.csv");
+
+        // Checking if it loaded all 9 rows
+        assert_eq!(students.len(), 9);
+
+        // Check one row/student
+        assert_eq!(students[3].study_hours_per_week, 13.0);
+        assert_eq!(students[3].score, 70.0);
+    }
+}
